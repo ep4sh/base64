@@ -1,0 +1,29 @@
+{{ define "content" }}
+  <div class="py-5 album h-100 bg-light">
+
+    <div class="py-0 container text-center">
+      <h1>Base64 Processor</h1>
+    </div>
+
+    <div class="py-5 container">
+      <div class="row">
+        <form class="card-body" action="/exec" method="POST">
+            <legend>Choose action</legend>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="decode" name="base_radio" value="decode" class="custom-control-input">
+              <label class="custom-control-label" for="decode">Decode</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="encode" name="base_radio" value="encode" class="custom-control-input"  checked>
+              <label class="custom-control-label" for="encode">Encode</label>
+            </div>
+            <div class="mb-3">
+                <label for="base64_body"></label>
+                <textarea class="form-control" id="base64_body" name="base64_body" rows="10" placeholder=">" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">process!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{{ end }}

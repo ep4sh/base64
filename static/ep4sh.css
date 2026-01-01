@@ -1,0 +1,43 @@
+.menu {
+background-color: #ebedf0;
+color: black;
+}
+
+.menu a:hover {
+text-decoration:  none;
+}
+
+.ico {
+width: 5em;
+height: 5em;
+}
+
+.ico2 {
+width: 3.3em;
+height: 3.3em;
+}
+
+.head_img {
+width: 20ch;
+height: 20ch;
+}
+
+.index-small {
+font-size: 0.7em;
+}
+
+#process-btn {
+  transition: background-color 1.4s ease, opacity 1.4s ease;
+}
+
+#process-btn.htmx-request {
+  background-color: orange !important;
+  opacity: 0.8 !important;
+}
+
+#process-btn.htmx-error {
+  background-color: red !important;
+  border-color: black !important;
+  color: white !important;
+  opacity: 0.65 !important;
+}
