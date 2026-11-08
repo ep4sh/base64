@@ -1,11 +1,11 @@
 ## Description
-![base64](https://ep4sh.ru/static/base64.png)  
+![base64](https://ep4sh.tech/static/base64.png)
 Base64 decodes and encodes inputs - like a billion similar services, but with No logs or additional processing.
 K8s friendly. htmx.
 
 
 ## Deployment
-Please checkout [my home page](https://base64.ep4sh.ru) for actual deployment of the service.
+Please checkout [my home page](https://base64.ep4sh.tech) for actual deployment of the service.
 
 
 ## Makefile
