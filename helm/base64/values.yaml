@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.2"
+  tag: "0.0.3"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
@@ -62,20 +62,14 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "nginx"
+  className: "traefik"
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: base64.ep4sh.ru
+    - host: base64.ep4sh.tech
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls:
-    - secretName: base64-ep4sh-ru-tls
-      hosts:
-        - base64.ep4sh.ru
 
 httpRoute:
   # HTTPRoute enabled.
@@ -112,17 +106,17 @@ httpRoute:
   #     - name: version
   #       value: v2
 
-resources: {}
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
@@ -137,7 +131,7 @@ readinessProbe:
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 

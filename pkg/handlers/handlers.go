@@ -49,7 +49,8 @@ func Exec(app *app.Application) http.HandlerFunc {
 			}
 			radioButton := r.FormValue("base_radio")
 			if (radioButton != "encode") && (radioButton != "decode") {
-				log.Printf("unknown radioButton choice: %s", err)
+				app.Sugar.Infow("unknown radioButton choice",
+					"radioButton", radioButton)
 				w.WriteHeader(http.StatusTeapot)
 				return
 			}
