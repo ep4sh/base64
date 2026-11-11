@@ -1,10 +1,10 @@
 {{ define "topmenu" }}
-    <div class="collapse bg-dark" id="navbarHeader">
+    <div class="bg-dark" id="navbarHeader" style="display: none;" aria-hidden="true">
       <div class="container">
         <div class="row">
           <div class="col-sm-8 col-md-7 py-3">
             <h4 class="text-white">About ep4sh</h4>
-            <p class="text-muted">Copy Ninja, Doshirak lover, [not]famous nerd </p>
+            <p class="text-secondary">Copy Ninja, Doshirak lover, [not]famous nerd </p>
           </div>
           <div class="col-sm-4 offset-md-1 py-3">
             <h4 class="text-white">Contacts</h4>
@@ -18,7 +18,7 @@
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm" >
       <div class="container d-flex justify-content-between">
-        <a href="/#" class="navbar-brand d-flex flex-end" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <a href="/#" class="navbar-brand d-flex flex-end" id="navbarToggle" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" width="1" height="1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
               <img class="head_img" src="/static/ep4sh.png"/>
             </svg>
@@ -26,6 +26,21 @@
         </a>
       </div>
     </div>
+    <script>
+      (function () {
+        var toggle = document.getElementById('navbarToggle');
+        var panel = document.getElementById('navbarHeader');
+        if (toggle && panel) {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            var open = panel.style.display === 'none';
+            panel.style.display = open ? 'block' : 'none';
+            panel.setAttribute('aria-hidden', String(!open));
+            toggle.setAttribute('aria-expanded', String(open));
+          });
+        }
+      })();
+    </script>
     <menu class="py-3 my-0 menu text-center menu-container">
       <div class="container">
           <a href="https://ep4sh.tech" class="menu-link">
